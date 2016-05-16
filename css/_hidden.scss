@@ -1,0 +1,20 @@
+.hidden{
+  &.button.description{
+    width: 25px;
+    height: 25px;
+    bottom: 93%;
+    left: 81%;
+
+    transition: bottom 1s, left .25s, height 1s, width 1s;
+  }
+
+  &.top{
+    .title{
+      font-size: 2em;
+    }
+
+    .directions{
+      opacity: 0;
+    }
+  }
+}

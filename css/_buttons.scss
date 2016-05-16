@@ -1,0 +1,31 @@
+$button-background-color: #666;
+
+.button {
+  background-color: $button-background-color; //probably will be changed when using Olivia's buttons
+  border-radius: 100%;
+  bottom: calc(2.5%);
+  color: #fff;                          //will be changed when using Olivia's buttons
+  left: calc(8%);
+  padding: calc(2%);                    //will be changed when using Olivia's buttons
+  position: fixed;
+  width: calc(11%);
+  z-index: 5;
+
+  img{
+    float:left; //will be changed when using Olivia's buttons
+  }
+
+  &.description{
+    bottom: calc(50%);
+    left: calc(44%);
+    transition: bottom 1s, left 1s, height 1s, width 1s;
+  }
+
+  &.help{
+    left: calc(77%); //position of help button at current width percentage
+  }
+
+  &#active {
+    background: #333; //background change on touch event
+  }
+}

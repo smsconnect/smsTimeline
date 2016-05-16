@@ -1,0 +1,135 @@
+$content-holder-background-color: #025594;
+$description-font-size: 1.25em;
+$description-text-color: #fff;
+$font-stack: 'Source Sans Pro', sans-serif;
+$text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+$timeline-color: #333;
+
+@import 'reset';
+@import 'buttons';
+
+
+
+body {
+  font-family: $font-stack;
+  z-index: 0;
+}
+
+
+
+//custom vis buttons used for navigating between events. 'buttons' import above
+//handles default button styling (help and menu pull down buttons)
+.button.prev {
+  background: none;
+  box-shadow: none;
+  color: #fff; //will be changed when using Olivia's buttons
+  font-size: 36px; //will be changed when using Olivia's buttons
+  left: calc(32.5%);
+  line-height: 1; //will be changed when using Olivia's buttons
+  text-indent: 10px; //will be changed when using Olivia's buttons
+}
+
+.button.next {
+  @extend .prev;
+  left: calc(54%);
+}
+
+
+
+//content elements for the events such as images, audio, and videos
+.content {
+  margin: 20px 20px 20px 20px;
+  opacity: 0;
+  position: relative;
+  transition: opacity .35s linear, width .2s linear, top .2s linear;
+  z-index: 1;
+
+  //for styling event images
+  img {
+    height: auto;
+    max-width: 100%;
+    width: auto;
+  }
+}
+
+
+
+//div that holds premade audio player
+div.prototype-wrapper {
+  margin-top: 20px;
+  opacity: 0;
+  position: relative;
+  transition: opacity .35s linear, width .2s linear;
+  width: 100%;
+  z-index: 1;
+}
+
+
+
+//div that holds event content (images, audio, video) and descriptions
+#event-holder {
+  background-color: $content-holder-background-color;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  opacity: .9;
+  position: fixed;
+  top: 0;
+  -webkit-transform: translate3d(0, 0, 0); //weird attempt at a fix for browser bar...not needed in app
+  transition: width .2s linear;
+  z-index: 0;
+
+  //event text descriptions
+  .text {
+    color: $description-text-color;
+    font-size: $description-font-size;
+    line-height: 1.25;
+    margin: 0;
+    opacity: 0;
+    padding: 0px 20px;
+    padding-right: 35px;
+    position: absolute;
+    text-shadow: $text-shadow;
+    transition: opacity .35s linear;
+    z-index: -2;
+  }
+}
+
+
+//svg that holds timeline and other d3 elements
+.svg {
+  position: absolute;
+  z-index: -2;
+}
+
+
+
+//d3 svg path that makes up the timeline on the right side of the vis
+.timeline-path {
+  path {
+    fill: none;
+    stroke: $timeline-color;
+    stroke-width: 3;
+  }
+
+  //years on the timeline axis
+  .tick text {
+    fill: $timeline-color;
+  }
+
+  //ticks on the timeline axis
+  .tick line {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: $timeline-color;
+  }
+}
+
+
+
+//svg path that holds enlarged date of an event when it is navigated to
+.viewer-svg {
+  opacity: 1;
+  transition: top .35s, left .35s, height .35s, width .35s;
+  z-index: 3;
+}
